@@ -21,12 +21,11 @@
 package uk.co.caprica.spako.repository
 
 import uk.co.caprica.spako.domain.User
-import java.util.*
 
 class MemoryUserRepository : UserRepository {
 
-    override fun readUsers(): List<User> {
-        return Collections.unmodifiableList(ArrayList(users.values))
+    override fun readUsers(): Collection<User> {
+        return users.values
     }
 
     override fun readUser(username: String): User? {
@@ -35,18 +34,17 @@ class MemoryUserRepository : UserRepository {
 
     companion object {
 
-        private val users = HashMap<String, User>()
+        private val users = mapOf(
+            "boss"     to User("boss"    , "Sword Saint Isshin"   ),
+            "emma"     to User("emma"    , "The Gentle Blade"     ),
+            "emo"      to User("emo"     , "Genichiro"            ),
+            "dad"      to User("dad"     , "Great Shinobi Owl"    ),
+            "bananas"  to User("bananas" , "Guardian Ape"         ),
+            "granny"   to User("granny"  , "Lady Butterfly"       ),
+            "horseguy" to User("horseguy", "Gyoubu Masataka Oniwa"),
+            "scorchio" to User("scorchio", "Demon of Hatred"      )
+        )
 
-        init {
-            users["boss"] = User("boss", "Sword Saint Isshin")
-            users["emma"] = User("emma", "The Gentle Blade")
-            users["emo"] = User("emo", "Genichiro")
-            users["dad"] = User("dad", "Great Shinobi Owl")
-            users["bananas"] = User("bananas", "Guardian Ape")
-            users["granny"] = User("granny", "Lady Butterfly")
-            users["horseguy"] = User("horseguy", "Gyoubu Masataka Oniwa")
-            users["scorchio"] = User("scorchio", "Demon of Hatred")
-        }
     }
 
 }

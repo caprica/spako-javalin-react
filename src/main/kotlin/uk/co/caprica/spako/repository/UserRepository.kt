@@ -27,7 +27,7 @@ import uk.co.caprica.spako.domain.User
  */
 interface UserRepository {
 
-    fun readUsers(): List<User>
+    fun readUsers(): Collection<User>
 
     fun readUser(username: String): User?
 

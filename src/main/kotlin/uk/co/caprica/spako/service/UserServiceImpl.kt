@@ -28,7 +28,7 @@ class UserServiceImpl : UserService {
     // Use static singleton component instances for services and repositories, or any dependency injection framework
     private val userRepository = MemoryUserRepository()
 
-    override fun users(): List<User> {
+    override fun users(): Collection<User> {
         return userRepository.readUsers()
     }
 
